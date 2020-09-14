@@ -5097,7 +5097,7 @@ do {							\
 #ifdef CFG_EXTAL
 #define JZ_EXTAL		CFG_EXTAL
 #else
-#define JZ_EXTAL		3686400
+#define JZ_EXTAL		12000000
 #endif
 #define JZ_EXTAL2		32768 /* RTC clock */
 
