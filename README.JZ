@@ -1,0 +1,119 @@
+
+		Ingenic U-Boot Release
+
+		(Updated: 2008-04-14)
+
+
+-------------------------
+* Install U-Boot Source *
+-------------------------
+
+To install the full source of u-boot-1.1.6, you need to download following
+two files from http://www.ingenic.cn:
+
+* u-boot-1.1.6.tar.bz2: the original u-boot source package.
+* u-boot-1.1.6-jz-yyyymmdd.patch.gz: the latest u-boot patch from ingenic.
+
+First, put the u-boot tarball in the working directory and unpack it:
+
+    $ tar -xjf u-boot-1.1.6.tar.bz2
+
+Then, apply the patch to the u-boot tree:
+
+    $ cd u-boot-1.1.6
+    $ gzip -cd ../u-boot-1.1.6-jz-yyyymmdd.patch.gz | patch -p1
+
+
+---------------
+* Quick Start *
+---------------
+
+To build u-boot-1.1.6, you needs MIPS GCC-3.3.1 or GCC-4.1.2.
+
+This release supports several platforms based on JZSOC. The platform
+names are listed below:
+
+  - LIBRA: JZ4730 development board
+  - PMPV1: JZ4730 PMP reference board version 1.x
+  - PMPV2: JZ4730 PMP reference board version 2.x
+  - GPS: JZ4730 GPS reference board
+  - LEO: JZ4740 development board
+  - PAVO: JZ4740 PMP reference board
+  - VIRGO: JZ4720 reference board
+  - DIPPER: JZ4725 reference board
+
+Configure and compile u-boot:
+
+For example,
+
+  - Build u-boot.bin for NOR flash boot:
+
+    $ make pmpv2_config (JZ4730-based PMP version 2.x board)
+    $ make pavo_config (JZ4740-based PAVO board)
+    $ make virgo_config (JZ4720-based VIRGO board)
+    $ make dipper_config (JZ4725-based DIPPER board)
+
+    $ make
+
+  - Build u-boot-nand.bin for NAND flash boot:
+
+    $ make pmpv2_nand_config (JZ4730-based PMP version 2.x board)
+    $ make pavo_nand_config (JZ4740-based PAVO board)
+    $ make virgo_nand_config (JZ4720-based VIRGO board)
+    $ make dipper_nand_config (JZ4725-based DIPPER board)
+
+    $ make
+
+---------------------------
+* Overview of source tree *
+---------------------------
+
+  - board/
+      - libra/		LIBRA board dependent files
+      - pmpv1/		PMP ver 1.x board dependent files
+      - pmpv2/		PMP ver 2.x board dependent files
+      - gps/		GPS board dependent files
+      - leo/		LEO board dependent files
+      - pavo/		PAVO board dependent files
+      - virgo/		VIRGO board dependent files
+      - dipper/		DIPPER board dependent files
+  - cpu/mips/
+      - start.S		MIPS32 start code
+      - cpu.c		cpu generic code
+      - jz4730.c	JZ4730 generic code
+      - jz4740.c	JZ4740 generic code
+      - jz_serial.c	jz serial driver
+      - jz_eth.c	jz on-chip ethernet driver
+      - jz_i2c.c	jz i2c driver
+      - jz_lcd.c	jz LCD driver
+      - jz_mmc.c	jz MMC/SD driver
+      - jz4730_nand.c	JZ4730 NAND flash driver
+      - jz4740_nand.c	JZ4740 NAND flash driver
+  - include/asm-mips/
+      - jz4730.h	JZ4730 generic headers
+      - jz4740.h	JZ4740 generic headers
+  - include/configs/
+      - libra.h		LIBRA board definitions
+      - pmpv1.h		PMP ver 1.x board definitions
+      - pmpv2.h		PMP ver 2.x board definitions
+      - gps.h		GPS board definitions
+      - leo.h		LEO board definitions
+      - pavo.h		PAVO board definitions
+      - virgo.h		VIRGO board definitions
+      - dipper.h	DIPPER board definitions
+  - lib_mips/
+      - board.c		generic board init code
+  - nand_spl/		NAND secondary program loader
+      - nand_boot_jz4730.c	jz4730 generic code
+      - nand_boot_jz4740.c	jz4740 generic code
+      - board/pmpv1/	PMP ver 1.x board dependent files	
+      - board/pmpv2/	PMP ver 1.x board dependent files
+      - board/leo/	LEO board dependent files
+      - board/pavo/	PAVO board dependent files
+      - board/virgo/	VIRGO board dependent files
+      - board/dipper/	DIPPER board dependent files
+
+
+-----------
+* Support *
+-----------

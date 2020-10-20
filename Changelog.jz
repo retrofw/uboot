@@ -1,0 +1,137 @@
+2011-03-14 Benson Yang <hpyang@ingenic.cn>
+	*Modify JZ4760B to implement the NEW mechanism of ECC and SUPPORT 8k nand.*
+
+	Changed files:
+	include/linux/mtd/nand.h
+	cpu/mips/Makefile
+
+	Added file:
+	cpu/mips/jz4760b_nand.c
+
+2010-08-05 Wolfgang Wang <lgwang@ingenic.cn>
+	Add pll1 init for jz4760.
+
+	Changed files:
+	include/asm-mips/jz4760.h
+	include/configs/jz4760_common.h
+	cpu/mips/jz4760.c
+
+2010-04-30 Wolfgang Wang <lgwang@ingenic.cn>
+
+	Fix a large memory bug(); "lib_mips/board.c" add "#include <asm/jzsoc.h>"
+	
+	Added file:
+	asm-mips/jzsoc.h
+
+	Changed file:
+	lib_mips/board.c
+
+2010-02-03 Wolfgang Wang <lgwang@ingenic.cn>
+
+	Support large DRAM(jz4750>128M, jz4760>256M)
+
+	Changed file:
+	include/asm-mips/jz4750.h
+	include/asm-mips/jz4760.h
+	cpu/mips/jz4760.c
+	cpu/mips/jz4750.c
+	lib_mips/board.c
+
+2009-08-14 Wolfgang Wang <lgwang@ingenic.cn>
+
+	Add macros "CONFIG_JZ4750 CONFIG_JZ4760" control for cmd_msc.c
+
+	Changed file:
+	common/cmd_msc.c
+
+2009.05.14
+* Add Jz4750L platform: F4750L board(which is a FPGA board).
+
+2009.05.06 
+* Add Jz4755 platform: CETUS board.
+	
+2009.03.23 
+* You can define CFG_NAND_BCH_WITH_OOB to conform NAND ECC with linux kernel.
+  <lhhuang@ingenic.cn>
+	Changed Files:
+		include/configs/apus.h
+		include/linux/mtd/nand.h
+	        cpu/mips/jz4750_nand.c
+                drivers/nand/nand_base.c	
+
+2009.03.23 
+* APUS use 4K pagesize nand & 4bit BCH as default.
+  Set ECCPOS to 28.  		<zyliu@ingenic.cn>
+	Changed Files:
+		include/configs/apus.h
+		include/configs/pavo.h
+	
+2009.03.23 
+* Add Jz4750 reset and APUS LCD driver.
+  Change Nand SPL pad size to 32K.      <zyliu@ingenic.cn>
+	Added Files:
+		cpu/mips/jz4750_lcd.c
+		cpu/mips/jz4750_lcd.h
+
+	Changed Files:
+		include/configs/apus.h
+		include/asm-mips/4750.h
+		include/lcd.h
+		common/lcd.c
+		cpu/mips/Makefile
+		cpu/mips/cpu.c
+		board/apus/apus.c
+		nand_spl/board/apus/Makefile
+	
+2009.03.06:
+* Because a bug in RS ECC of jz4740 that reading all 0xff data in one NAND page 
+  will occur uncorrectalbe ECC error, we should detect whether the data in a page 
+  is all 0xff or not by seeing if there is no-zero ECC in oob, instead of using 
+  the old method which is seeing if there is no-0xff in the 3rd, 4th or 5th byte 
+  in oob.
+	
+	Changed Files:
+		drivers/nand/nand_base.c
+	
+2008.11.24:
+* Support NAND of 4KB pagesize. <lhhuang@ingenic.cn>
+    Files updated:
+	include/linux/mtd/mtd-abi.h
+	nand_spl/nand_boot_jz4740.c
+	nand_spl/nand_boot_jz4750.c
+	drivers/nand/nand_base.c
+	drivers/nand/nand_ids.c
+	drivers/nand/nand_util.c
+	cpu/mips/jz4740_nand.c
+	cpu/mips/jz4750_nand.c
+	include/configs/pavo.h
+	include/configs/apus.h
+
+2008.05.30:
+
+* Add Jz4725 DIPPER Board Support
+	
+2008.05.05:
+
+* Added FOXCONN_PT035TN01 LCD panel support for PAVO board. <zyliu@ingenic.cn>
+
+2008.04.26:
+
+* Patch jz4740_nand.c to optimize the RS correction algorithm. <zengzhaoxiu>
+
+2008.04.11:
+
+* nand_spl/nand_boot_jz4740.c: fixed a fatal bug of nand_load(), which will
+  fail to load u-boot when meeting a bad block. <zyliu@ingenic.cn>
+
+2008.03.19:
+
+* Modified nand read/write/erase commands in common/cmd_nand.c
+  to support bad blocks checking. <zyliu@ingenic.cn>
+
+2008.02.26:
+
+* Release for JZ4740 and JZ4730.
+
+2008.10.31
+* Add boot from MMC/SD card for jz4750 like NAND. <cwjia@ingenic.cn>
