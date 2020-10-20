@@ -2778,6 +2778,133 @@ crux_nand_config	:	unconfig
 	@echo "CONFIG_USE_DDR2 = n" >> $(obj)include/config.mk
 	@echo "CONFIG_USE_SDRAM = n" >> $(obj)include/config.mk
 
+RetroFW_1A_defconfig:   unconfig
+	@echo "#define CONFIG_MSC_U_BOOT" > $(obj)include/config.h
+	@echo "#define CONFIG_JZ_RECOVERY">> $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_MDDR" >> $(obj)include/config.h
+	@echo "#define CONFIG_LCD" >> $(obj)include/config.h
+	@echo "#define CONFIG_JZ4760_LCD_RG_V10" >> $(obj)include/config.h
+	@echo "Compile MSC boot image for a RetroFW 1.0 screen with a JZ4760 processor"
+	@./mkconfig -a lepus mips mips lepus
+	@echo "TEXT_BASE = 0x80100200" > $(obj)board/lepus/config.tmp
+	@echo "CONFIG_MSC_U_BOOT = y" >> $(obj)include/config.mk
+	@echo "CONFIG_CPU_TYPE = 4760" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_MDDR = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR1 = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR2 = y" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_SDRAM = n" >> $(obj)include/config.mk
+	@echo "CONFIG_JZ_RECOVERY = y" >> $(obj)include/config.mk
+	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
+
+RetroFW_1B_defconfig:   unconfig
+	@echo "#define CONFIG_MSC_U_BOOT" > $(obj)include/config.h
+	@echo "#define CONFIG_JZ_RECOVERY">> $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
+	@echo "#define CONFIG_LCD" >> $(obj)include/config.h
+	@echo "#define CONFIG_JZ4760_LCD_RG_V10" >> $(obj)include/config.h
+	@echo "Compile MSC boot image for a RetroFW 1.0 screen with a JZ4760B processor"
+	@./mkconfig -a lepus60b mips mips lepus60b
+	@echo "TEXT_BASE = 0x80100200" > $(obj)board/lepus60b/config.tmp
+	@echo "CONFIG_MSC_U_BOOT = y" >> $(obj)include/config.mk
+	@echo "CONFIG_CPU_TYPE = 4760b" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_MDDR = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR1 = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR2 = y" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_SDRAM = n" >> $(obj)include/config.mk
+	@echo "CONFIG_JZ_RECOVERY = y" >> $(obj)include/config.mk
+	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
+
+RetroFW_2A_defconfig:   unconfig
+	@echo "#define CONFIG_MSC_U_BOOT" > $(obj)include/config.h
+	@echo "#define CONFIG_JZ_RECOVERY">> $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_MDDR" >> $(obj)include/config.h
+	@echo "#define CONFIG_LCD" >> $(obj)include/config.h
+	@echo "#define CONFIG_JZ4760_LCD_RG_V21" >> $(obj)include/config.h
+	@echo "Compile MSC boot image for a RetroFW 2.1 screen with a JZ4760 processor"
+	@./mkconfig -a lepus mips mips lepus
+	@echo "TEXT_BASE = 0x80100200" > $(obj)board/lepus/config.tmp
+	@echo "CONFIG_MSC_U_BOOT = y" >> $(obj)include/config.mk
+	@echo "CONFIG_CPU_TYPE = 4760" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_MDDR = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR1 = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR2 = y" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_SDRAM = n" >> $(obj)include/config.mk
+	@echo "CONFIG_JZ_RECOVERY = y" >> $(obj)include/config.mk
+	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
+
+RetroFW_2B_defconfig:   unconfig
+	@echo "#define CONFIG_MSC_U_BOOT" > $(obj)include/config.h
+	@echo "#define CONFIG_JZ_RECOVERY">> $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
+	@echo "#define CONFIG_LCD" >> $(obj)include/config.h
+	@echo "#define CONFIG_JZ4760_LCD_RG_V21" >> $(obj)include/config.h
+	@echo "Compile MSC boot image for a RetroFW 2.1 screen with a JZ4760B processor"
+	@./mkconfig -a lepus60b mips mips lepus60b
+	@echo "TEXT_BASE = 0x80100200" > $(obj)board/lepus60b/config.tmp
+	@echo "CONFIG_MSC_U_BOOT = y" >> $(obj)include/config.mk
+	@echo "CONFIG_CPU_TYPE = 4760b" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_MDDR = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR1 = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR2 = y" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_SDRAM = n" >> $(obj)include/config.mk
+	@echo "CONFIG_JZ_RECOVERY = y" >> $(obj)include/config.mk
+	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
+
+RetroFW_3B_defconfig:   unconfig
+	@echo "#define CONFIG_MSC_U_BOOT" > $(obj)include/config.h
+	@echo "#define CONFIG_JZ_RECOVERY">> $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
+	@echo "#define CONFIG_LCD" >> $(obj)include/config.h
+	@echo "#define CONFIG_JZ4760_LCD_RG_V30" >> $(obj)include/config.h
+	@echo "Compile MSC boot image for a RetroFW 3.0 screen with a JZ4760B processor"
+	@./mkconfig -a lepus60b mips mips lepus60b
+	@echo "TEXT_BASE = 0x80100200" > $(obj)board/lepus60b/config.tmp
+	@echo "CONFIG_MSC_U_BOOT = y" >> $(obj)include/config.mk
+	@echo "CONFIG_CPU_TYPE = 4760b" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_MDDR = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR1 = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR2 = y" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_SDRAM = n" >> $(obj)include/config.mk
+	@echo "CONFIG_JZ_RECOVERY = y" >> $(obj)include/config.mk
+	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
+
+RetroFW_4B_defconfig:   unconfig
+	@echo "#define CONFIG_MSC_U_BOOT" > $(obj)include/config.h
+	@echo "#define CONFIG_JZ_RECOVERY">> $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
+	@echo "#define CONFIG_LCD" >> $(obj)include/config.h
+	@echo "#define CONFIG_JZ4760_LCD_TM370_LN430_9" >> $(obj)include/config.h
+	@echo "Compile MSC boot image for a RetroFW 4.0 screen (RS-07) with a JZ4760B processor"
+	@./mkconfig -a lepus60b mips mips lepus60b
+	@echo "TEXT_BASE = 0x80100200" > $(obj)board/lepus60b/config.tmp
+	@echo "CONFIG_MSC_U_BOOT = y" >> $(obj)include/config.mk
+	@echo "CONFIG_CPU_TYPE = 4760b" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_MDDR = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR1 = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR2 = y" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_SDRAM = n" >> $(obj)include/config.mk
+	@echo "CONFIG_JZ_RECOVERY = y" >> $(obj)include/config.mk
+	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
+
+RetroFW_5B_defconfig:   unconfig
+	@echo "#define CONFIG_MSC_U_BOOT" > $(obj)include/config.h
+	@echo "#define CONFIG_JZ_RECOVERY">> $(obj)include/config.h
+	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
+	@echo "#define CONFIG_LCD" >> $(obj)include/config.h
+	@echo "#define CONFIG_JZ4760_LCD_RG_IPS" >> $(obj)include/config.h
+	@echo "Compile MSC boot image for a RetroFW 5.0 (IPS) screen with a JZ4760B processor"
+	@./mkconfig -a lepus60b mips mips lepus60b
+	@echo "TEXT_BASE = 0x80100200" > $(obj)board/lepus60b/config.tmp
+	@echo "CONFIG_MSC_U_BOOT = y" >> $(obj)include/config.mk
+	@echo "CONFIG_CPU_TYPE = 4760b" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_MDDR = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR1 = n" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_DDR2 = y" >> $(obj)include/config.mk
+	@echo "CONFIG_USE_SDRAM = n" >> $(obj)include/config.mk
+	@echo "CONFIG_JZ_RECOVERY = y" >> $(obj)include/config.mk
+	@echo "CONFIG_MBR_UBOOT = y" >> $(obj)include/config.mk
 
 cetus_nand_config	:	unconfig
 	@echo "#define CONFIG_NAND_U_BOOT" > $(obj)include/config.h
