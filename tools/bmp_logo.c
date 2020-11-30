@@ -272,11 +272,11 @@ int main (int argc, char *argv[])
 	else {
               /*get rgb of 24-bit file*/	
 
-		uint8_t tmp1,tmp2,tmp3,tmp4;
+		uint8_t tmp1,tmp2,tmp3; //,tmp4;
 		int value;
 		int bitPerLine,i,j;
 		int padding = 0;
-		unsigned char data;
+		// unsigned char data;
 
 		bitPerLine  = ( (b->width*3)%4==0 ) ? b->width*3 : b->width*3 + (4- (b->width*3)%4) ;
 		 /*padding width */

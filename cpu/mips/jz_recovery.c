@@ -194,7 +194,6 @@ int recovery_mode_check(void)
 }
 void jz_recovery_handle(void)
 {
-	unsigned int signature = 0;
 
 	is_jz_linux_recovery=recovery_mode_check();
 	puts ("\n");
@@ -209,6 +208,7 @@ void jz_recovery_handle(void)
 	puts ("\n");
 
 #ifdef CFG_SUPPORT_RECOVERY_REG
+	unsigned int signature = 0;
 	signature = __cpm_get_scrpad();
 	if ((signature == RECOVERY_SIGNATURE) || (signature == RECOVERY_SIGNATURE_SEC)) {
 		if (signature == RECOVERY_SIGNATURE_SEC)

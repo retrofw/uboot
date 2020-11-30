@@ -29,7 +29,7 @@
 
 #include <asm/byteorder.h>
 
-#define CONFIG_SUPPORT_VFAT
+// #define CONFIG_SUPPORT_VFAT
 
 #define SECTOR_SIZE FS_BLOCK_SIZE
 

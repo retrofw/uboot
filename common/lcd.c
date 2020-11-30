@@ -112,7 +112,7 @@ static int lcd_getfgcolor (void);
 
 
 /************************************************************************/
-/*                 show progress of boot 20091103 by zhzhao
+/*                 show progress of boot 20091103 by zhzhao             */
 /*----------------------------------------------------------------------*/
 int progress_x=124,progress_y=205; // the start point to paint progress
 

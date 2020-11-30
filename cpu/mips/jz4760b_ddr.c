@@ -27,11 +27,12 @@
 //#define DEBUG
 #undef DEBUG
 
-#define dprintf
+#define dprintf(...)
 
 void sdram_init(void);
 
 extern void ddr_mem_init(int msel, int hl, int tsel, int arg);
+extern void serial_put_hex(unsigned int d);
 
 #ifdef DEBUG
 
@@ -202,7 +203,7 @@ static int ddr_dma_test(int print_flag)
 {
 	int i, err = 0, banks, blocks;
 	int times;
-	unsigned int addr, DDR_DMA0_SRC, DDR_DMA0_DST, DDR_DMA1_SRC, DDR_DMA1_DST;
+	unsigned int addr, DDR_DMA0_SRC, DDR_DMA0_DST; //, DDR_DMA1_SRC, DDR_DMA1_DST;
 	volatile unsigned int tmp;
 	register unsigned int cpu_clk;
 	long int memsize, banksize, testsize;
@@ -269,7 +270,7 @@ void sdram_init(void)
 {
 	int i, num = 0, tsel = 0, msel, hl;
 	volatile unsigned int tmp_cnt;
-	register unsigned int tmp, cpu_clk, mem_clk, ddr_twr, ns, ns_int;
+	register unsigned int tmp, cpu_clk, mem_clk, ddr_twr, ns_int; //, ns
 	register unsigned long ps;
 	register unsigned int ddrc_timing1_reg = 0, ddrc_timing2_reg = 0, init_ddrc_refcnt = 0, init_ddrc_dqs = 0, init_ddrc_ctrl = 0;
 
@@ -592,7 +593,6 @@ __convert:
 
 			REG_DDRC_MMAP0 = ddrc_mmap0_reg;
 			REG_DDRC_MMAP1 = ddrc_mmap1_reg;
-//			REG_DDRC_MMAP1 = 0x0000ff00;
 #ifdef DEBUG
 			ddrc_regs_print();
 #endif
@@ -691,7 +691,6 @@ __convert:
 	// james
 	REG_DDRC_MMAP0 = ddrc_mmap0_reg;
 	REG_DDRC_MMAP1 = ddrc_mmap1_reg;
-//	REG_DDRC_MMAP1 = 0x0000ff00;
 	REG_DDRC_REFCNT = init_ddrc_refcnt;
 
 	/* Enable DLL Detect */

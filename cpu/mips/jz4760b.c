@@ -47,7 +47,7 @@ void pll_init(void)
 	int div[6] = {1, 2, 4, 4, 4, 4};
 	//int div[6] = {1, 2, 2, 2, 2, 2};
 	int pllout2;
-	int gpuclk = 240000000;
+	// int gpuclk = 240000000;
 
 	cfcr = 	CPM_CPCCR_PCS |
 		(n2FR[div[0]] << CPM_CPCCR_CDIV_BIT) |
@@ -238,7 +238,6 @@ do {					\
 }
 #endif /* ifndef CONFIG_FPGA */
 
-
 //medive add 
 
 #define BITS_H2L(msb,lsb)  ((0xFFFFFFFF >> (32-((msb)-(lsb)+1))) << (lsb))
@@ -296,7 +295,7 @@ do {							\
 
 
 static int bat_inited = 0;
-void me_battery_init()
+void me_battery_init(void)
 {
 	if (bat_inited)
 		return;
@@ -382,39 +381,6 @@ int jz_board_init(void)
 
 #ifndef CONFIG_FPGA
 	rtc_init();		/* init rtc on any reset: */
-#endif
-
-	//medive change for test vbat
-#if 0
-	
-	unsigned int rtc_hrcr =  rtc_read_reg(RTC_HRCR);
-	if (rtc_hrcr != 0x0fe0){
-
-		rtc_write_reg(RTC_HRCR,0x0fe0);
-	}
-
-	
-	unsigned int timeout = 0x3fff;
-	me_battery_init();
-	while((REG_SADC_STATE & SADC_STATE_PBATRDY ) == 0 && (--timeout)){
-		;
-	}
-	if (timeout < 2){
-		serial_puts("SNK read vbat timeout!\n");
-		return 0;
-	}
-	unsigned int val = REG_SADC_BATDAT;
-
-	val = val*3 - 900;
-	if (val < 3550){
-		serial_puts("SNK low power! low power!\n");
-		me_do_hibernate();
-	}else{
-		printf("SNK read vbat value is %d\n",val);
-		serial_puts("SNK go go go!\n");
-	}
-
-
 #endif
 
 	return 0;

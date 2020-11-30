@@ -32,6 +32,7 @@ extern void flush_cache_all(void);
 extern int serial_init(void);
 extern void serial_puts(const char *s);
 extern void sdram_init(void);
+extern void pll_init(void);
 
 #define u32 unsigned int
 #define u16 unsigned short
@@ -150,10 +151,9 @@ int mmc_block_readm(u32 src, u32 num, u8 *dst)
 		resp = mmc_cmd(18, src * 512, 0x10409, MSC_CMDAT_RESPONSE_R1);
 
 #endif
-
 	nob  = num / 512;
 
-	for (nob; nob >= 1; nob--) {
+	for (; nob >= 1; nob--) {
 		timeout = 0x7ffffff;
 		while (timeout) {
 			timeout--;

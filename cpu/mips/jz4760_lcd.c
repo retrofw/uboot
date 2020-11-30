@@ -1155,7 +1155,7 @@ void draw_battery(int charge_count)
 	}
 }
 
-void lcd_clean_frame()
+void lcd_clean_frame(void)
 {
 	int i, w, h;
 	unsigned short *p = (unsigned short *)lcd_frame0;
@@ -1275,7 +1275,7 @@ static void slcd_init(void)
 #endif
 }
 
-extern int usb_detect();
+extern int usb_detect(void);
 extern int get_battery_mv(void);
 extern void power_off_ub(void);
 

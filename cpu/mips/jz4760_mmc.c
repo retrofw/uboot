@@ -809,7 +809,7 @@ static int mmc_init_card_state(struct mmc_request *request)
 	struct mmc_response_r3 r3;
 	int retval;
 	int ocr = 0x40300000;
-	int limit_41 = 0;
+	// int limit_41 = 0;
 
 	DEBUG(2,"mmc_init_card_state\n");
 

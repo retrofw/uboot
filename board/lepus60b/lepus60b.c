@@ -23,6 +23,11 @@
 #include <asm/mipsregs.h>
 #include <asm/jz4760b.h>
 
+extern void me_battery_init(void);
+extern void sadc_start_pbat(void);
+extern void sadc_stop_pbat(void);
+extern void me_do_hibernate(void);
+
 static void gpio_init(void)
 {
 	/* For ethernet data line init */

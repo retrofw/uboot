@@ -333,7 +333,7 @@ static int mmc_load(int uboot_size, u8 *dst)
 void spl_boot(void)
 {
 	void (*uboot)(void);
-	int i;
+
 	/*
 	 * Init hardware
 	 */

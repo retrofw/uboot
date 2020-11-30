@@ -97,38 +97,25 @@ $(obj)jz_serial.c:
 	@rm -f $(obj)jz_serial.c
 	ln -sf $(SRCTREE)/cpu/mips/jz_serial.c $(obj)jz_serial.c
 
-ifeq ($(CONFIG_USE_MDDR),y)
 $(obj)jz4760b_ddr.c:
 	@rm -f $(obj)jz4760b_ddr.c
 	ln -sf $(SRCTREE)/cpu/mips/jz4760b_ddr.c $(obj)jz4760b_ddr.c
+
 $(obj)jz_mddr_init.c:
 	@rm -f $(obj)jz_mddr_init.c
 	ln -sf $(SRCTREE)/cpu/mips/jz_mddr_init.c $(obj)jz_mddr_init.c
-endif
 
-ifeq ($(CONFIG_USE_DDR1),y)
-$(obj)jz4760b_ddr.c:
-	@rm -f $(obj)jz4760b_ddr.c
-	ln -sf $(SRCTREE)/cpu/mips/jz4760b_ddr.c $(obj)jz4760b_ddr.c
 $(obj)jz_ddr1_init.c:
 	@rm -f $(obj)jz_ddr1_init.c
 	ln -sf $(SRCTREE)/cpu/mips/jz_ddr1_init.c $(obj)jz_ddr1_init.c
-endif
 
-ifeq ($(CONFIG_USE_DDR2),y)
-$(obj)jz4760b_ddr.c:
-	@rm -f $(obj)jz4760b_ddr.c
-	ln -sf $(SRCTREE)/cpu/mips/jz4760b_ddr.c $(obj)jz4760b_ddr.c
 $(obj)jz_ddr2_init.c:
 	@rm -f $(obj)jz_ddr2_init.c
 	ln -sf $(SRCTREE)/cpu/mips/jz_ddr2_init.c $(obj)jz_ddr2_init.c
-endif
 
-ifeq ($(CONFIG_USE_SDRAM),y)
 $(obj)jz4760b_sdram.c:
 	@rm -f $(obj)jz4760b_sdram.c
 	ln -sf $(SRCTREE)/cpu/mips/jz4760b_sdram.c $(obj)jz4760b_sdram.c
-endif
 
 # from msc_spl directory
 $(obj)msc_boot_jz4760b.c:

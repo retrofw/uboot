@@ -207,7 +207,7 @@
 /*
  * Configurable options for zImage if SPL is to load zImage instead of u-boot.
  */
-#define CONFIG_LOAD_UBOOT /* If it's defined, then spl load u-boot instead of zImage, and following options isn't used */
+#define CONFIG_LOAD_UBOOT	/* If it's defined, then spl load u-boot instead of zImage, and following options isn't used */
 #define PARAM_BASE					0x80004000      /* The base of parameters which will be sent to kernel zImage */
 #define CFG_ZIMAGE_SIZE				(2 << 20)	/* Size of kernel zImage */
 #define CFG_ZIMAGE_DST				0x80100000	/* Load kernel zImage to this addr */
@@ -278,6 +278,7 @@
 #define CFG_NAND_BCH_BIT        8               /* Specify the hardware BCH algorithm for 4760 (4|8) */
 #define CFG_NAND_ECC_POS        24               /* Ecc offset position in oob area, its default value is 3 if it isn't defined. */
 #define CFG_NAND_SMCR1          0x11444400      /* 0x0fff7700 is slowest */
+// #define CFG_NAND_SMCR1          0x0d444400      /* 0x0fff7700 is slowest */
 #define CFG_NAND_USE_PN         0               /* Use PN in jz4760 for TLC NAND */
 #define CFG_NAND_BACKUP_NUM     1               /* TODO */
 
@@ -318,7 +319,6 @@
 #define CFG_NAND_U_BOOT_SIZE	(512 << 10)
 #endif
 
-
 /*
  * IPL (Initial Program Loader, integrated inside CPU)
  * Will load first 8k from MSC (SPL) into cache and execute it from there.
@@ -353,7 +353,6 @@
 
 #ifdef CFG_JZ_LINUX_RECOVERY
 #define CONFIG_DEFAULT_ENV_SIZE 	CFG_ENV_SIZE
-
 #define CFG_ENV_REVY_OFFSET			(CFG_ENV_OFFSET + CFG_ENV_SIZE)	/* environment starts here  */
 #endif
 #endif
@@ -362,11 +361,11 @@
 /*-----------------------------------------------------------------------
  * SPI NOR FLASH configuration
  */
-#define CFG_SPI_MAX_FREQ			1000000
-#define CFG_SPI_U_BOOT_DST			0x80100000	/* Load NUB to this addr	*/
-#define CFG_SPI_U_BOOT_START		CFG_SPI_U_BOOT_DST
-#define CFG_SPI_U_BOOT_OFFS			(8 << 10)
-#define CFG_SPI_U_BOOT_SIZE			(256 << 10)
+#define CFG_SPI_MAX_FREQ		1000000
+#define CFG_SPI_U_BOOT_DST		0x80100000	/* Load NUB to this addr	*/
+#define CFG_SPI_U_BOOT_START	CFG_SPI_U_BOOT_DST
+#define CFG_SPI_U_BOOT_OFFS		(8 << 10)
+#define CFG_SPI_U_BOOT_SIZE		(256 << 10)
 
 /*-----------------------------------------------------------------------
  * FLASH and environment organization
@@ -419,28 +418,28 @@
 #define BATTERY_FULL_VALUE		4500//to app
 #define BATTERY_USB_OFFSET		110
 
-#define GPIO_LCD_PWM			__GPIO('E', 1) /* GPE1 PWM1 */
-#define GPIO_LCD_VCC_EN			__GPIO('E', 25) /* ln430_9 no use,but no del */
-#define GPIO_CHARG_ON			__GPIO('B', 29) /* GPB30 PWM1 */
-#define GPIO_USB_DETE			__GPIO('D', 7) //__GPIO('B', 21)
+#define GPIO_LCD_PWM			__GPIO('E', 1)	// GPE1 PWM1
+#define GPIO_LCD_VCC_EN			__GPIO('E', 25)	// ln430_9 no use,but no del
+#define GPIO_CHARG_ON			__GPIO('B', 29)	// GPB30 PWM1 */
+#define GPIO_USB_DETE			__GPIO('D', 7)	// __GPIO('B', 21)
 
-#define GPIO_LCD_POWER_N		__GPIO('B', 31) /* GPB31 */
-#define GPIO_LCD_DISP_N			__GPIO('F', 6)        /*LCD_DISP_N use for lcd reset*/
-#define GPIO_KEY_WAKEUP			__GPIO('A', 30)/*GPA32 WAKEUP*/
-#define GPIO_KEY_VOLUME_INC		__GPIO('C', 31)/*GPC31  sw1 */
-#define GPIO_KEY_VOLUME_DEC		__GPIO('C', 29)/*GPC29  sw3 */
-#define GPIO_KEY_MENU			__GPIO('D', 27)/*GPD27 */
-#define GPIO_KEY_BOOT			__GPIO('D', 17)/*GPD17 BOOT_SEL0*/
+#define GPIO_LCD_POWER_N		__GPIO('B', 31)	// GPB31
+#define GPIO_LCD_DISP_N			__GPIO('F', 6)	// LCD_DISP_N use for lcd reset
+#define GPIO_KEY_WAKEUP			__GPIO('A', 30)	// GPA32 WAKEUP
+#define GPIO_KEY_VOLUME_INC		__GPIO('C', 31)	// GPC31  sw1
+#define GPIO_KEY_VOLUME_DEC		__GPIO('C', 29)	// GPC29  sw3
+#define GPIO_KEY_MENU			__GPIO('D', 27)	// GPD27
+#define GPIO_KEY_BOOT			__GPIO('D', 17)	// GPD17 BOOT_SEL0
 
 #define UMIDO_KEY_R				__GPIO('D', 24)
 #define UMIDO_KEY_X				__GPIO('E', 7)
 
-#define GPIO_SD0_VCC_EN_N		__GPIO('F', 9)  /* GPF9 */
-// #define GPIO_SD0_CD_N		__GPIO('B', 22) /* GPB22 */
-#define GPIO_SD0_CD_N			__GPIO('F', 0) /* GPF00 */
-#define GPIO_SD0_WP_N			__GPIO('F', 4)  /* GPF4 */
-#define GPIO_SD1_VCC_EN_N		__GPIO('E', 9)  /* GPE9 */
-#define GPIO_SD1_CD_N			__GPIO('A', 28) /* GPA28 */
+#define GPIO_SD0_VCC_EN_N		__GPIO('F', 9)	// GPF9
+// #define GPIO_SD0_CD_N		__GPIO('B', 22)	// GPB22
+#define GPIO_SD0_CD_N			__GPIO('F', 0)	// GPF00
+#define GPIO_SD0_WP_N			__GPIO('F', 4)	// GPF4
+#define GPIO_SD1_VCC_EN_N		__GPIO('E', 9)	// GPE9
+#define GPIO_SD1_CD_N			__GPIO('A', 28)	// GPA28
 
 #define UBOOT_SEL_REVY_KEY1		UMIDO_KEY_R
 #define UBOOT_SEL_REVY_KEY2		UMIDO_KEY_X

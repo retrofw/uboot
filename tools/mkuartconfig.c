@@ -17,9 +17,9 @@
 /*#define DEBUG_UART_CONFIG*/
 #ifdef DEBUG_UART_CONFIG
 static unsigned int counts = 0;
-#define ucprintf(fmt...) printf(fmt)
+#define ucprintf(fmt, ...) printf(fmt)
 #else
-#define ucprintf(fmt...)
+#define ucprintf(fmt, ...)
 #endif
 
 #define CONFIG_HEAD "/* Automatically generated - do not edit */ \n\n#ifndef __JZ_SERIAL_H__\n#define __JZ_SERIAL_H__\n\n"
@@ -66,8 +66,9 @@ static unsigned short *get_divisor(unsigned int baud)
 		return quot1;
 	}
 
-    if (write_file(fd, CONFIG_HEAD, strlen(CONFIG_HEAD)) < 0)
+    if (write_file(fd, CONFIG_HEAD, strlen(CONFIG_HEAD)) < 0) {
         return quot1;
+    }
     
 	sum = 0;
 	umr_best = div_best = uacr_best = 0;

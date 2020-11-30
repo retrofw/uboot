@@ -263,41 +263,6 @@ static int ddr_dma_test(int print_flag)
 	return err;
 }
 
-static void allen_mem_test(void)
-{
-#define MEM_BASE  0xa0000000		/*un-cached*/
-
-	volatile unsigned int *ptr;
-	long int memsize;
-	int i=0;
-	memsize = initdram(0);
-	/*write data to bank0~3*/
-	serial_puts("Write data to SDRAM\n");
-	serial_puts("memsize = ");
-	serial_put_hex(memsize);
-	for (ptr = (volatile unsigned int *)(MEM_BASE); (unsigned int)ptr < MEM_BASE + memsize; ptr++) {
-		*ptr = (unsigned int)ptr;
-		if (*ptr != (unsigned int)ptr) {
-			serial_puts("wrong data at:");
-			serial_put_hex(*ptr);
-		}
-		i++;
-	}
-	for (ptr = (volatile unsigned int *)(MEM_BASE); (unsigned int)ptr < MEM_BASE + memsize; ptr++) {
-		*ptr = (unsigned int)ptr;
-		if (*ptr != (unsigned int)ptr) {
-			serial_puts("wrong data at:");
-			serial_put_hex(*ptr);
-		}
-	}
-
-
-	serial_puts("End at ");
-	serial_put_hex(*ptr);
-	serial_puts("Read and compare finish\n");
-
-}
-
 #define DEF_DDR_CVT 0
 #define DDR_USE_FIRST_ARGS 0
 /* DDR sdram init */
@@ -718,11 +683,7 @@ __convert:
 	/* Wait for number of auto-refresh cycles */
 	tmp_cnt = (cpu_clk / 1000000) * 10;
 	while (tmp_cnt--);
-#if 1
 	ddr_dma_test(1);
-#else
-	allen_mem_test();
-#endif
 
 #ifdef DEBUG
 	ddrc_regs_print();

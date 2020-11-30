@@ -99,6 +99,7 @@ ifeq ($(CONFIG_USE_MDDR),y)
 $(obj)jz4760b_ddr.c:
 	@rm -f $(obj)jz4760b_ddr.c
 	ln -s $(SRCTREE)/cpu/mips/jz4760b_ddr.c $(obj)jz4760b_ddr.c
+
 $(obj)jz_mddr_init.c:
 	@rm -f $(obj)jz_mddr_init.c
 	ln -s $(SRCTREE)/cpu/mips/jz_mddr_init.c $(obj)jz_mddr_init.c
@@ -108,6 +109,7 @@ ifeq ($(CONFIG_USE_DDR1),y)
 $(obj)jz4760b_ddr.c:
 	@rm -f $(obj)jz4760b_ddr.c
 	ln -s $(SRCTREE)/cpu/mips/jz4760b_ddr.c $(obj)jz4760b_ddr.c
+
 $(obj)jz_ddr1_init.c:
 	@rm -f $(obj)jz_ddr1_init.c
 	ln -s $(SRCTREE)/cpu/mips/jz_ddr1_init.c $(obj)jz_ddr1_init.c
@@ -117,6 +119,7 @@ ifeq ($(CONFIG_USE_DDR2),y)
 $(obj)jz4760b_ddr.c:
 	@rm -f $(obj)jz4760b_ddr.c
 	ln -s $(SRCTREE)/cpu/mips/jz4760b_ddr.c $(obj)jz4760b_ddr.c
+
 $(obj)jz_ddr2_init.c:
 	@rm -f $(obj)jz_ddr2_init.c
 	ln -s $(SRCTREE)/cpu/mips/jz_ddr2_init.c $(obj)jz_ddr2_init.c

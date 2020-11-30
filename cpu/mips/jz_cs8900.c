@@ -82,7 +82,7 @@ struct eth_device *dev;
 static unsigned short get_reg_init_bus (int regno)
 {
 	/* force 16 bit busmode */
-	volatile unsigned char c;
+	// volatile unsigned char c;
     //c = CS8900_BUS16_0;
 	//c = CS8900_BUS16_1;
 	//c = CS8900_BUS16_0;

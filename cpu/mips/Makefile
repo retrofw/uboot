@@ -27,10 +27,20 @@ include $(OBJTREE)/include/config.mk
 LIB	= $(obj)lib$(CPU).a
 
 START	= start.o
-COBJS	= jz4730.o jz4740.o jz5730.o jz_lcd.o jz4740_slcd.o jz_serial.o jz_eth.o jz_i2c.o \
-	  asc_serial.o au1x00_serial.o au1x00_eth.o au1x00_usb_ohci.o \
-	  cpu.o interrupts.o incaip_clock.o jz_mmc.o jz4730_nand.o jz4740_cpm_test.o \
-	  jz5730_nand.o jz4740_nand.o jz_cs8900.o ax88796c.o
+COBJS	= \
+	  cpu.o \
+	  interrupts.o \
+	  jz_serial.o \
+	  jz_cs8900.o \
+# 	  jz_mmc.o \
+# 	  incaip_clock.o \
+# 	  jz4730_nand.o jz4740_cpm_test.o \
+# 	  asc_serial.o au1x00_serial.o au1x00_eth.o au1x00_usb_ohci.o \
+# 	  jz_lcd.o jz4740_slcd.o \
+# 	  jz_eth.o jz_i2c.o \
+# 	  jz4730.o jz4740.o jz5730.o \
+# 	  ax88796c.o \
+# 	  jz5730_nand.o jz4740_nand.o  \
 
 ifeq ($(CONFIG_CPU_TYPE),4750)
     COBJS	+= jz4750_lcd.o jz4750_nand.o jz4750.o jz4750_mmc.o
@@ -46,7 +56,7 @@ ifeq ($(CONFIG_CPU_TYPE),4760)
 endif
 
 ifeq ($(CONFIG_CPU_TYPE),4760b)
-  COBJS	+= jz4760b.o jz4760b_nand.o jz4760_eth.o jz4760_mmc.o jz4760_lcd.o jz4760b_ddr.o
+  COBJS	+= jz4760b.o jz4760b_nand.o jz4760_mmc.o jz4760_lcd.o jz4760b_ddr.o #jz4760_eth.o 
 endif
 
 ifeq ($(CONFIG_CPU_TYPE),4770)

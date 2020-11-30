@@ -122,7 +122,7 @@ static int mmc_block_writem(u32 src, u32 num, u8 *dst)
 		sorm = 1;
 	}
 
-	for (nob; nob >= 1; nob--) {
+	for (; nob >= 1; nob--) {
 
 		timeout = 0x3FFFFFF;
 
@@ -191,7 +191,7 @@ static int mmc_block_readm(u32 src, u32 num, u8 *dst)
 		sorm = 1;
 	}
 
-	for (nob; nob >= 1; nob--) {
+	for (; nob >= 1; nob--) {
 
 		timeout = 0x3ffffff;
 
