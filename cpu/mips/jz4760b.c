@@ -295,11 +295,10 @@ do {							\
 }while(0);
 
 
-static int me_init_flag = 0;
+static int bat_inited = 0;
 void me_battery_init()
 {
-
-	if (me_init_flag)
+	if (bat_inited)
 		return;
 	int div ;
 	REG_CPM_CLKGR0 &= ~(1 << 14);
@@ -311,9 +310,7 @@ void me_battery_init()
 	REG_SADC_CFG  = 0;
 	REG_SADC_STATE = 0x3f;
 	REG_SADC_ENA = 0x2;
-
-	me_init_flag = 1;
-
+	bat_inited = 1;
 }
 
 void sadc_start_pbat(void)
