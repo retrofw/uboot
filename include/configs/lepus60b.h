@@ -227,13 +227,13 @@
 #define PTN_MISC_SIZE				(1* 0x100000)
 #define PTN_KERNEL_SIZE				(4* 0x100000)
 #define PTN_RECOVERY_SIZE			0//(4* 0x100000)
-#define PTN_SYSTEM_SIZE				(100* 0x100000) //rootfs
-#define PTN_USERDATA_SIZE			(100* 0x100000)  //appfs
+#define PTN_SYSTEM_SIZE				(250* 0x100000) //rootfs
+#define PTN_USERDATA_SIZE			(90* 0x100000)  //appfs
 #define PTN_CACHE_SIZE				(30* 0x100000)	//cfg
-#if 0 //max is 4g
+#if 1 //max is 4g
 #define PTN_VFAT_SIZE				(6718*1024)
-#else //16G
-#define PTN_VFAT_SIZE				(29204*1024UL)
+#else //8G
+#define PTN_VFAT_SIZE				(0x1000000UL)
 #endif
 
 /*======== Partition offset ============ */
