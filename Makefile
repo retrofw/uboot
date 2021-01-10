@@ -256,10 +256,7 @@ __LIBS := $(subst $(obj),,$(LIBS))
 ALL = $(obj)u-boot.srec $(obj)u-boot.bin $(obj)System.map $(U_BOOT_NAND) \
 	$(U_BOOT_MSC) $(U_BOOT_SPI)  $(MBR_UBOOT)
 
-all:	build_git_verison_file $(ALL)
-
-build_git_verison_file:
-	@python2 version_header_creater.py
+all:	$(ALL)
 
 $(obj)u-boot.hex:	$(obj)u-boot
 		$(OBJCOPY) ${OBJCFLAGS} -O ihex $< $@
