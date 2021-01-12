@@ -369,13 +369,12 @@ void spl_boot(void)
 	__cpm_start_uart1();
 	serial_init();
 
-	//serial_puts("\n\nMSC Secondary Program Loader\n");
+	serial_puts("\n\nMSC Secondary Program Loader\n");
 
 #ifndef CONFIG_FPGA
 	pll_init();
 #endif
 
-	serial_puts("ddr init begin \n");
 	sdram_init();
 
 	/*
@@ -385,7 +384,7 @@ void spl_boot(void)
 
 	uboot = (void (*)(void))CFG_NAND_U_BOOT_START;
 
-	//serial_puts("Starting U-Boot ...\n");
+	serial_puts("Starting U-Boot ...\n");
 
 	/*
 	 * Flush caches
