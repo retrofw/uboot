@@ -364,6 +364,7 @@ void spl_boot(void)
 	__cpm_start_ddr();
 	/* enable mdmac's clock */
 	REG_MDMAC_DMACKES = 0x3;
+	REG_MDMAC_DMACKE = 0x3;
 
 	__gpio_as_uart1();
 	__cpm_start_uart1();

@@ -2929,7 +2929,8 @@ do {							\
   #define DDRC_TIMING1_TWTR_4		(3 << DDRC_TIMING1_TWTR_BIT)
 
 /* DDRC Timing Config Register 2 */
-#define DDRC_TIMING2_TRFC_BIT         24 /* AUTO-REFRESH command period. */
+#define DDRC_TIMING2_TRFC_BIT_JZ4760  12 /* AUTO-REFRESH command period. */
+#define DDRC_TIMING2_TRFC_BIT_JZ4760B 24 /* AUTO-REFRESH command period. */
 #define DDRC_TIMING2_TRFC_MASK        (0xf << DDRC_TIMING2_TRFC_BIT)
 #define DDRC_TIMING2_TMINSR_BIT       8  /* Minimum Self-Refresh / Deep-Power-Down time */
 #define DDRC_TIMING2_TMINSR_MASK      (0xf << DDRC_TIMING2_TMINSR_BIT)

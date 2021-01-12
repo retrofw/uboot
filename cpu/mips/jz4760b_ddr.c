@@ -373,7 +373,7 @@ void sdram_init(void)
 	tmp = DDR_GET_VALUE(DDR_tRFC, ps);
 	//tmp = (DDR_tRFC % ns == 0) ? DDR_tRFC / ns : (DDR_tRFC / ns + 1);
 	if (tmp > 31) tmp = 31;
-	ddrc_timing2_reg = ((tmp / 2) << DDRC_TIMING2_TRFC_BIT);
+	ddrc_timing2_reg = ((tmp >> 1) << DDRC_TIMING2_TRFC_BIT_JZ4760) | ((tmp >> 1) << DDRC_TIMING2_TRFC_BIT_JZ4760B);
 
 	/* Minimum Self-Refresh / Deep-Power-Down time */
 	tmp = DDR_tMINSR;
