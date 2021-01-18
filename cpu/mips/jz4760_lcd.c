@@ -506,15 +506,24 @@ struct jz4750lcd_info *jz4750_lcd_info = &jzfb; /* default output to lcd panel *
 /************************************************************************/
 
 vidinfo_t panel_info = {
-#if defined(CONFIG_JZ4750_LCD_SAMSUNG_LTP400WQF02) || defined(CONFIG_JZ4750_LCD_AUO_A043FL01V2) || defined(CONFIG_JZ4750_LCD_L430) || defined(CONFIG_JZ4760_LCD_TM370_LN430_9)
+#if defined(CONFIG_JZ4750_LCD_SAMSUNG_LTP400WQF02) || \
+	defined(CONFIG_JZ4750_LCD_AUO_A043FL01V2) || \
+	defined(CONFIG_JZ4750_LCD_L430) || \
+	defined(CONFIG_JZ4760_LCD_TM370_LN430_9)
 	480, 272, LCD_BPP,
-#elif defined(CONFIG_JZ4750_LCD_TRULY_TFT_GG1P0319LTSW_W) || defined(CONFIG_JZ4760_SLCD_SNK)
+#elif defined(CONFIG_JZ4750_LCD_TRULY_TFT_GG1P0319LTSW_W) || \
+	defined(CONFIG_JZ4760_SLCD_SNK)
 	240, 320, LCD_BPP,
-#elif defined(CONFIG_JZ4750_LCD_FOXCONN_PT035TN01) || defined(CONFIG_JZ4750_LCD_INNOLUX_PT035TN01_SERIAL)
+#elif defined(CONFIG_JZ4750_LCD_FOXCONN_PT035TN01) || \
+	defined(CONFIG_JZ4750_LCD_INNOLUX_PT035TN01_SERIAL)
 	320, 240, LCD_BPP,
 #elif defined(CONFIG_JZ4750_SLCD_KGM701A3_TFT_SPFD5420A)
 	400, 240, LCD_BPP,
-#elif defined(CONFIG_JZ4760_LCD_SNK) || defined(CONFIG_JZ4760_LCD_RG_V10) || defined(CONFIG_JZ4760_LCD_RG_V21) || defined(CONFIG_JZ4760_LCD_RG_V30) || defined(CONFIG_JZ4760_LCD_RG_IPS)
+#elif defined(CONFIG_JZ4760_LCD_SNK) || \
+	defined(CONFIG_JZ4760_LCD_RG_V10) || \
+	defined(CONFIG_JZ4760_LCD_RG_V21) || \
+	defined(CONFIG_JZ4760_LCD_RG_V30) || \
+	defined(CONFIG_JZ4760_LCD_RG_IPS)
 	320, 480, LCD_COLOR16,
 #else
 	#error "Select LCD panel first!!!"
@@ -1218,7 +1227,11 @@ static void lcd_gpio_init(void)
 		__gpio_as_lcd_8bit();
 	else if (jz4750_lcd_info->panel.cfg & LCD_CFG_MODE_SERIAL_TFT)
 	{
-#if defined(CONFIG_JZ4760_LCD_SNK) || defined(CONFIG_JZ4760_LCD_RG_V10) || defined(CONFIG_JZ4760_LCD_RG_V21) || defined(CONFIG_JZ4760_LCD_RG_V30) || defined(CONFIG_JZ4760_LCD_RG_IPS)
+#if defined(CONFIG_JZ4760_LCD_SNK) || \
+	defined(CONFIG_JZ4760_LCD_RG_V10) || \
+	defined(CONFIG_JZ4760_LCD_RG_V21) || \
+	defined(CONFIG_JZ4760_LCD_RG_V30) || \
+	defined(CONFIG_JZ4760_LCD_RG_IPS)
 		//__gpio_as_lcd_8bit + pclk
 		REG_GPIO_PXFUNS(2) = 0x000c31fc;
 		REG_GPIO_PXTRGC(2) = 0x000c31fc;
