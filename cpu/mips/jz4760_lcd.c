@@ -1221,39 +1221,39 @@ static void screen_off(void)
 
 static void lcd_gpio_init(void)
 {
-	__lcd_display_pin_init();
-
-	if (jz4750_lcd_info->panel.cfg & LCD_CFG_LCDPIN_SLCD)
-		__gpio_as_lcd_8bit();
-	else if (jz4750_lcd_info->panel.cfg & LCD_CFG_MODE_SERIAL_TFT)
-	{
-#if defined(CONFIG_JZ4760_LCD_SNK) || \
-	defined(CONFIG_LCD_A030JTN01) || \
-	defined(CONFIG_LCD_EJ030NA09B) || \
-	defined(CONFIG_LCD_LKWY030A01) || \
-	defined(CONFIG_LCD_Y030XX067A)
-		//__gpio_as_lcd_8bit + pclk
+	__lcd_display_pin_init();  //LCD REST
+#if defined(CONFIG_LCD_A030JTN01) || defined(CONFIG_LCD_Y030XX067A)
 		REG_GPIO_PXFUNS(2) = 0x000c31fc;
 		REG_GPIO_PXTRGC(2) = 0x000c31fc;
 		REG_GPIO_PXSELC(2) = 0x000c31fc;
 		REG_GPIO_PXPES(2)  = 0x000c31fc;
+		return;
+#endif
+	/* gpio init __gpio_as_lcd */
+	if (jz4750_lcd_info->panel.cfg & LCD_CFG_LCDPIN_SLCD)
+		__gpio_as_lcd_8bit();
+	else if (jz4750_lcd_info->panel.cfg & LCD_CFG_MODE_TFT_16BIT)
+		__gpio_as_lcd_16bit();
+	else if (jz4750_lcd_info->panel.cfg & LCD_CFG_MODE_TFT_24BIT)
+		__gpio_as_lcd_24bit();
+	else
+ 		__gpio_as_lcd_18bit();
+
+	/* In special mode, we only need init special pin,
+	 * as general lcd pin has init in uboot */
+#if defined(CONFIG_SOC_JZ4760) || defined(CONFIG_SOC_JZ4760B)
+	switch (jz4750_lcd_info->panel.cfg & LCD_CFG_MODE_MASK) {
+	case LCD_CFG_MODE_SPECIAL_TFT_1:
+	case LCD_CFG_MODE_SPECIAL_TFT_2:
+	case LCD_CFG_MODE_SPECIAL_TFT_3:
+		__gpio_as_lcd_special();
+		break;
+	default:
+		;
+	}
 #endif
 
-		//DE io set 1
-		__gpio_as_func0(32*2+9);
-		__gpio_as_output(32*2+9);
-		__gpio_set_pin(32*2+9);
-	}
-	else
-	{
-		/* gpio init __gpio_as_lcd */
-		if (jz4750_lcd_info->panel.cfg & LCD_CFG_MODE_TFT_16BIT)
-			__gpio_as_lcd_16bit();
-		else if (jz4750_lcd_info->panel.cfg & LCD_CFG_MODE_TFT_24BIT)
-			__gpio_as_lcd_24bit();
-		else if (jz4750_lcd_info->panel.cfg & LCD_CFG_MODE_TFT_18BIT)
-			__gpio_as_lcd_18bit();
-	}
+	return;
 }
 
 static void lcd_set_bpp_to_ctrl_bpp(void)
