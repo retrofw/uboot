@@ -101,7 +101,7 @@ struct jz4750lcd_info {
  * LCD panel specific definition
  */
 
-#if defined(CONFIG_JZ4760_LCD_TM370_LN430_9)
+#if defined(CONFIG_LCD_TM370LN4309)
 	#define SPEN		(32*4+0)       /*LCD_CS*/
 	#define SPCK		(32*3+11)       /*LCD_SCL*/
 	#define SPDA		(32*4+2)       /*LCD_SDA*/
@@ -156,7 +156,7 @@ do { \
 	__gpio_clear_pin(GPIO_LCD_PWM); \
 } while (0)
 
-#endif /* CONFIG_JZ4760_LCD_TM370_LN430_9 */
+#endif /* CONFIG_LCD_TM370LN4309 */
 
 
 #if defined(CONFIG_JZ4760_LCD_SNK)
@@ -356,7 +356,7 @@ __spi_writ_bit16(0x34, 0x06); \
 #endif
 
 
-#if defined(CONFIG_JZ4760_LCD_RG_V10)
+#if defined(CONFIG_LCD_A030JTN01)
 // #if defined(CONFIG_JZ4760_LEPUS) || defined(CONFIG_JZ4760B_LEPUS)/* board pavo */
 	#define SPEN		(32*4+0)       /*LCD_CS*/
 	#define SPCK		(32*3+11)       /*LCD_SCL*/
@@ -458,9 +458,9 @@ do { \
 	/*__gpio_clear_pin(GPIO_LCD_PWM);		*/\
   } while (0)
 
-#endif /* CONFIG_JZ4760_LCD_RG_V10 */
+#endif /* CONFIG_LCD_A030JTN01 */
 
-#if defined(CONFIG_JZ4760_LCD_RG_V21)
+#if defined(CONFIG_LCD_EJ030NA09B)
 // #if defined(CONFIG_JZ4760_LEPUS) || defined(CONFIG_JZ4760B_LEPUS)/* board pavo */
 	#define SPEN		(32*4+0)       /*LCD_CS*/
 	#define SPCK		(32*3+11)       /*LCD_SCL*/
@@ -591,9 +591,9 @@ do { \
     __gpio_as_output(GPIO_LCD_PWM);		\
 	__gpio_clear_pin(GPIO_LCD_PWM);		\
   } while (0)
-#endif /* CONFIG_JZ4760_LCD_RG_V21 */
+#endif /* CONFIG_LCD_EJ030NA09B */
 
-#if defined(CONFIG_JZ4760_LCD_RG_V30)
+#if defined(CONFIG_LCD_LKWY030A01)
 // #if defined(CONFIG_JZ4760_LEPUS) || defined(CONFIG_JZ4760B_LEPUS)/* board pavo */
 	#define SPEN		(32*4+0)       /*LCD_CS*/
 	#define SPCK		(32*3+11)       /*LCD_SCL*/
@@ -732,9 +732,9 @@ __spi_writ_bit16(0x34, 0x06); \
   } while (0)
 
 
-#endif /* CONFIG_JZ4760_LCD_RG_V30 */
+#endif /* CONFIG_LCD_LKWY030A01 */
 
-#if defined(CONFIG_JZ4760_LCD_RG_IPS)
+#if defined(CONFIG_LCD_Y030XX067A)
 // #if defined(CONFIG_JZ4760_LEPUS) || defined(CONFIG_JZ4760B_LEPUS)/* board pavo */
 	#define SPEN		(32*4+0)       /*LCD_CS*/
 	#define SPCK		(32*3+11)       /*LCD_SCL*/
@@ -836,7 +836,7 @@ __spi_writ_bit16(0x0e,0x10); \
 __spi_writ_bit16(0x10,0x7F); \
 __spi_writ_bit16(0x11,0x3F); \
 }while(0)
-#endif /* CONFIG_JZ4760_LCD_RG_IPS */
+#endif /* CONFIG_LCD_Y030XX067A */
 
 #ifndef __lcd_special_pin_init
 #define __lcd_special_pin_init()

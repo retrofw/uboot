@@ -111,15 +111,15 @@
 #define CONFIG_BOOTTYPE			"normal"
 #define CONFIG_BOOTTYPE_REVY	"recovery"
 
-#if defined(CONFIG_JZ4760_LCD_RG_V10)
+#if defined(CONFIG_LCD_A030JTN01)
 	#define CONFIG_HWVARIANT " hwvariant=1b"
-#elif defined(CONFIG_JZ4760_LCD_RG_V21)
+#elif defined(CONFIG_LCD_EJ030NA09B)
 	#define CONFIG_HWVARIANT " hwvariant=2b"
-#elif defined(CONFIG_JZ4760_LCD_RG_V30)
+#elif defined(CONFIG_LCD_LKWY030A01)
 	#define CONFIG_HWVARIANT " hwvariant=3b"
-#elif defined(CONFIG_JZ4760_LCD_TM370_LN430_9)
+#elif defined(CONFIG_LCD_TM370LN4309)
 	#define CONFIG_HWVARIANT " hwvariant=4b"
-#elif defined(CONFIG_JZ4760_LCD_RG_IPS)
+#elif defined(CONFIG_LCD_Y030XX067A)
 	#define CONFIG_HWVARIANT " hwvariant=5b"
 #else
 	#define CONFIG_HWVARIANT ""

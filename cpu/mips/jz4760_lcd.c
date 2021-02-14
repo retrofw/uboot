@@ -356,7 +356,7 @@ struct jz4750lcd_info jzfb = {
 		 .fg0 = {16, 0, 0, 240, 320}, /* bpp, x, y, w, h */
 		 .fg1 = {16, 0, 0, 240, 320}, /* bpp, x, y, w, h */
 	 },
-#elif defined(CONFIG_JZ4760_LCD_RG_V10)
+#elif defined(CONFIG_LCD_A030JTN01)
     .panel = {
 		.cfg = LCD_CFG_LCDPIN_LCD | LCD_CFG_RECOVER |	// Underrun recover
 			   LCD_CFG_MODE_SERIAL_TFT |				// General TFT panel
@@ -384,7 +384,7 @@ struct jz4750lcd_info jzfb = {
 		.fg1 = {16, 0, 0, 320, 480},		// bpp, x, y, w, h
 	 },
 
-#elif defined(CONFIG_JZ4760_LCD_RG_V21)
+#elif defined(CONFIG_LCD_EJ030NA09B)
 	.panel = {
 		.cfg = LCD_CFG_LCDPIN_LCD | LCD_CFG_RECOVER |	// Underrun recover
 				 LCD_CFG_MODE_SERIAL_TFT |				// General TFT panel
@@ -412,7 +412,7 @@ struct jz4750lcd_info jzfb = {
 		.fg1 = {16, 0, 0, 320, 480},		// bpp, x, y, w, h
 	},
 
-#elif defined(CONFIG_JZ4760_LCD_RG_V30)
+#elif defined(CONFIG_LCD_LKWY030A01)
 	.panel = {
 		.cfg = LCD_CFG_LCDPIN_LCD | LCD_CFG_RECOVER |	// Underrun recover
 				 LCD_CFG_MODE_SERIAL_TFT |				// General TFT panel
@@ -440,7 +440,7 @@ struct jz4750lcd_info jzfb = {
 		.fg0 = {16, 0, 0, 320, 480},		// bpp, x, y, w, h
 		.fg1 = {16, 0, 0, 320, 480},		// bpp, x, y, w, h
 	},
-#elif defined(CONFIG_JZ4760_LCD_RG_IPS)
+#elif defined(CONFIG_LCD_Y030XX067A)
 	.panel = {
 		.cfg = LCD_CFG_LCDPIN_LCD | LCD_CFG_RECOVER |	// Underrun recover
 				 LCD_CFG_NEWDES |							// 8words descriptor
@@ -468,7 +468,7 @@ struct jz4750lcd_info jzfb = {
 		.fg0 = {16, 0, 0, 320, 480},		// bpp, x, y, w, h
 		.fg1 = {16, 0, 0, 320, 480},		// bpp, x, y, w, h
 	},
-#elif defined(CONFIG_JZ4760_LCD_TM370_LN430_9)
+#elif defined(CONFIG_LCD_TM370LN4309)
 	.panel = {
 		.cfg = LCD_CFG_LCDPIN_LCD | LCD_CFG_RECOVER |	// Underrun recover
 				 LCD_CFG_NEWDES |
@@ -509,7 +509,7 @@ vidinfo_t panel_info = {
 #if defined(CONFIG_JZ4750_LCD_SAMSUNG_LTP400WQF02) || \
 	defined(CONFIG_JZ4750_LCD_AUO_A043FL01V2) || \
 	defined(CONFIG_JZ4750_LCD_L430) || \
-	defined(CONFIG_JZ4760_LCD_TM370_LN430_9)
+	defined(CONFIG_LCD_TM370LN4309)
 	480, 272, LCD_BPP,
 #elif defined(CONFIG_JZ4750_LCD_TRULY_TFT_GG1P0319LTSW_W) || \
 	defined(CONFIG_JZ4760_SLCD_SNK)
@@ -520,10 +520,10 @@ vidinfo_t panel_info = {
 #elif defined(CONFIG_JZ4750_SLCD_KGM701A3_TFT_SPFD5420A)
 	400, 240, LCD_BPP,
 #elif defined(CONFIG_JZ4760_LCD_SNK) || \
-	defined(CONFIG_JZ4760_LCD_RG_V10) || \
-	defined(CONFIG_JZ4760_LCD_RG_V21) || \
-	defined(CONFIG_JZ4760_LCD_RG_V30) || \
-	defined(CONFIG_JZ4760_LCD_RG_IPS)
+	defined(CONFIG_LCD_A030JTN01) || \
+	defined(CONFIG_LCD_EJ030NA09B) || \
+	defined(CONFIG_LCD_LKWY030A01) || \
+	defined(CONFIG_LCD_Y030XX067A)
 	320, 480, LCD_COLOR16,
 #else
 	#error "Select LCD panel first!!!"
@@ -1228,10 +1228,10 @@ static void lcd_gpio_init(void)
 	else if (jz4750_lcd_info->panel.cfg & LCD_CFG_MODE_SERIAL_TFT)
 	{
 #if defined(CONFIG_JZ4760_LCD_SNK) || \
-	defined(CONFIG_JZ4760_LCD_RG_V10) || \
-	defined(CONFIG_JZ4760_LCD_RG_V21) || \
-	defined(CONFIG_JZ4760_LCD_RG_V30) || \
-	defined(CONFIG_JZ4760_LCD_RG_IPS)
+	defined(CONFIG_LCD_A030JTN01) || \
+	defined(CONFIG_LCD_EJ030NA09B) || \
+	defined(CONFIG_LCD_LKWY030A01) || \
+	defined(CONFIG_LCD_Y030XX067A)
 		//__gpio_as_lcd_8bit + pclk
 		REG_GPIO_PXFUNS(2) = 0x000c31fc;
 		REG_GPIO_PXTRGC(2) = 0x000c31fc;
