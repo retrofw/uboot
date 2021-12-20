@@ -313,7 +313,7 @@ $(U_BOOT_SPI):	$(SPI_SPL) $(obj)u-boot.bin
 $(MBR_UBOOT):  $(U_BOOT_MSC) $(MBR)
 		cat $(MBR) $(U_BOOT_MSC) > $@
 $(MBR):
-		mkdir -p $(obj)/tools/mbr/
+		mkdir -p $(obj)tools/mbr/
 		gcc -I$(obj)include -I$(obj)include2 -I$(src)include  $(src)tools/mbr/mkmbr.c -o $(obj)tools/mbr/mkmbr;\
 		rm -rf $@;\
 		$(obj)tools/mbr/mkmbr $@
