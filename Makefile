@@ -2781,6 +2781,7 @@ RetroFW_defconfig:   unconfig
 	@echo "#define CONFIG_SDRAM_DDR2" >> $(obj)include/config.h
 	@echo "#define CONFIG_LCD" >> $(obj)include/config.h
 	@echo "#define CONFIG_LCD_$(LCD)" >> $(obj)include/config.h
+	@[ -z "$(USE_CL6)" ] || echo "#define CONFIG_DDR2_USE_CL6" >> $(obj)include/config.h
 	@echo "Compile MSC boot image for RetroFW JZ4760(B) SoC"
 	@./mkconfig -a lepus60b mips mips lepus60b
 	@echo "TEXT_BASE = 0x80100200" > $(obj)board/lepus60b/config.tmp
